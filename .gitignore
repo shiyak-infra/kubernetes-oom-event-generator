@@ -15,3 +15,6 @@
 
 /.godeps
 /kubernetes-oom-event-generator
+
+vendor
+.idea
