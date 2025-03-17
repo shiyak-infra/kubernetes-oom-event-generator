@@ -1,7 +1,8 @@
 .PHONY: install clean test image push-image
 
-IMAGE := xingse/kubernetes-oom-event-generator
-BRANCH = $(shell git rev-parse --abbrev-ref HEAD)
+VERSION := 1.0.0
+IMAGE 	:= ghcr.io/shiyak-infra/kubernetes-oom-event-generator
+BRANCH 	= $(shell git rev-parse --abbrev-ref HEAD)
 
 all: kubernetes-oom-event-generator
 
@@ -15,10 +16,10 @@ test:
 	@go test -v ./...
 
 image:
-	docker build -t $(IMAGE) .
+	docker build -t $(IMAGE):$(VERSION) .
 
 push-image:
-	docker push $(IMAGE)
+	docker push $(IMAGE):$(VERSION)
 
 release: image
 ifneq ($(BRANCH),master)
